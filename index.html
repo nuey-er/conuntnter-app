@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<link rel="manifest" href="manifest.json">
+	<meta name="theme-color" content="#ffffff">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カウンターアプリ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>カウンター: <span id="counter">0</span></h1>
+    <button onclick="add(100)">+100</button>
+    <button onclick="add(120)">+120</button>
+	<button onclick="add(300)">+300</button>
+
+    <script>
+        let counter = 0;
+
+        function add(value) {
+            counter += value;
+            document.getElementById('counter').textContent = counter;
+        }
+
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('/service-worker.js')
+			.then(() => console.log('Service Worker Registered'));
+		}
+
+    </script>
+
+</body>
+</html>
